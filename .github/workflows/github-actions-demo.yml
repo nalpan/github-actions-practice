@@ -26,9 +26,9 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: nalpan/github-actions-practice@main
+        uses: ajilraju/actions-date@v0.1
         with:
-          who-to-greet: 'Mona the Octocat'
+          args: date --set "2021-07-01"
       # `hello` ステップからの出力を使用する
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+      # - name: Get the output time
+      #   run: echo "The time was ${{ steps.hello.outputs.time }}"
