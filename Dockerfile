@@ -7,7 +7,7 @@ COPY entrypoint.sh /entrypoint.sh
 ENV TZ Asia/Tokyo
 
 # 依存パッケージのインストール
-# RUN apk update && apk add gcc git make
+RUN apk update && apk add git
 
 # libfaketimeのインストール
 WORKDIR /
