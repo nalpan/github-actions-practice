@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: nalpan/github-actions-practice@v1
+        uses: nalpan/github-actions-practice@main
         with:
           who-to-greet: 'Mona the Octocat'
       # `hello` ステップからの出力を使用する
