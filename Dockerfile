@@ -1,5 +1,5 @@
 # コードを実行するコンテナイメージ
-FROM alpine:3.10
+FROM prantlf/alpine-make-gcc:latest as builder
 
 # アクションのリポジトリからコードファイルをコンテナのファイルシステムパス `/`にコピー
 COPY entrypoint.sh /entrypoint.sh
@@ -7,7 +7,7 @@ COPY entrypoint.sh /entrypoint.sh
 ENV TZ Asia/Tokyo
 
 # 依存パッケージのインストール
-RUN apk update && apk add gcc git make
+# RUN apk update && apk add gcc git make
 
 # libfaketimeのインストール
 WORKDIR /
