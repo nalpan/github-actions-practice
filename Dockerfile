@@ -39,5 +39,3 @@ CMD date \
  && date \
  && echo -e '-10y' > /etc/faketimerc \
  && date \
- && rm -f /etc/faketimerc \
- && date
