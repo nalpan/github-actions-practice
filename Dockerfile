@@ -7,7 +7,7 @@ COPY entrypoint.sh /entrypoint.sh
 ENV TZ Asia/Tokyo
 
 # 依存パッケージのインストール
-RUN yum install -y gcc git
+RUN apk update && apk --update add gcc && apk --update git
 
 # libfaketimeのインストール
 WORKDIR /
