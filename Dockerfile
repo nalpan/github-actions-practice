@@ -1,18 +1,22 @@
 # コードを実行するコンテナイメージ
-FROM trajano/alpine-libfaketime:latest as builder
+FROM alpine
+COPY --from=trajano/alpine-libfaketime  /faketime.so /lib/faketime.so
+ENV LD_PRELOAD=/lib/faketime.so
+# FROM trajano/alpine-libfaketime:latest as builder
 
 # アクションのリポジトリからコードファイルをコンテナのファイルシステムパス `/`にコピー
 COPY entrypoint.sh /entrypoint.sh
 
-CMD date \
- && echo -e '@2000-01-01 09:00:00' > /etc/faketimerc \
- && date \
- && echo -e '+3d' > /etc/faketimerc \
- && date \
- && echo -e '-10y' > /etc/faketimerc \
- && date \
- && rm -f /etc/faketimerc \
- && date
+CMD faketime=+10d && date
+# date \
+#  && echo -e '@2000-01-01 09:00:00' > /etc/faketimerc \
+#  && date \
+#  && echo -e '+3d' > /etc/faketimerc \
+#  && date \
+#  && echo -e '-10y' > /etc/faketimerc \
+#  && date \
+#  && rm -f /etc/faketimerc \
+#  && date
 
 
 # # タイムゾーン設定
