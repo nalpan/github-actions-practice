@@ -32,10 +32,11 @@ WORKDIR /
 # https://github.com/wolfcw/libfaketime
 
 # テストコマンド実行
-CMD date \
- && echo -e '@2000-01-01 09:00:00' > /etc/faketimerc \
- && date \
- && echo -e '+3d' > /etc/faketimerc \
- && date \
- && echo -e '-10y' > /etc/faketimerc \
- && date \
+RUN FAKETIME="@2001-09-03 00:00:00" && date
+# CMD date \
+#  && echo -e '@2000-01-01 09:00:00' > /etc/faketimerc \
+#  && date \
+#  && echo -e '+3d' > /etc/faketimerc \
+#  && date \
+#  && echo -e '-10y' > /etc/faketimerc \
+#  && date \
