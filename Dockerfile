@@ -1,6 +1,9 @@
 # コードを実行するコンテナイメージ
 FROM trajano/alpine-libfaketime:latest as builder
 
+# アクションのリポジトリからコードファイルをコンテナのファイルシステムパス `/`にコピー
+COPY entrypoint.sh /entrypoint.sh
+
 CMD date \
  && echo -e '@2000-01-01 09:00:00' > /etc/faketimerc \
  && date \
@@ -11,8 +14,7 @@ CMD date \
  && rm -f /etc/faketimerc \
  && date
 
-# # アクションのリポジトリからコードファイルをコンテナのファイルシステムパス `/`にコピー
-# COPY entrypoint.sh /entrypoint.sh
+
 # # タイムゾーン設定
 # ENV TZ Asia/Tokyo
 
