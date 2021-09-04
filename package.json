@@ -1,0 +1,23 @@
+{
+  "name": "github-actions-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nalpan/github-actions-practice.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nalpan/github-actions-practice/issues"
+  },
+  "homepage": "https://github.com/nalpan/github-actions-practice#readme",
+  "dependencies": {
+    "dayjs": "^1.10.6"
+  }
+}
