@@ -7,14 +7,21 @@ jobs:
     steps:
       - run: echo "event -> ${{ github.event_name }}"
       - run: echo "os -> ${{ runner.os }}"
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - name: build image
-        run: |
-          docker build -f ${{ github.workspace }}/docker/Dockerfile . -t faketime_node_demo
-      - name: run container
-        run: |
-          docker run --rm  faketime_node_demo
+      - run: git clone https://github.com/wolfcw/libfaketime /libfaketime
+      # - run: apk -U add build-base
+      - run: cd /libfaketime && make && make install
+      - run: cp /usr/local/lib/faketime/libfaketimeMT.so.1 /faketime.so
+      - run: cp /faketime.so /lib/faketime.so
+      - run: LD_PRELOAD=/lib/faketime.so && ENV FAKETIME=+15d
+      - run: date
+      # - name: Check out repository code
+      #   uses: actions/checkout@v2
+      # - name: build image
+      #   run: |
+      #     docker build -f ${{ github.workspace }}/docker/Dockerfile . -t faketime_node_demo
+      # - name: run container
+      #   run: |
+      #     docker run --rm  faketime_node_demo
       # `hello` ステップからの出力を使用する
       # - name: Get the output time
       #   run: echo "The time was ${{ steps.hello.outputs.time }}"
