@@ -12,7 +12,7 @@ jobs:
       - run: cd ~/libfaketime && sudo make && sudo make install
       - run: cp /usr/local/lib/faketime/libfaketimeMT.so.1 ~/faketime.so
       # - run: cp ~/faketime.so /lib/faketime.so
-      - run: LD_PRELOAD=~/faketime.so && FAKETIME=+15d && date
+      - run: LD_PRELOAD=~/faketime.so FAKETIME=+15d date
       # - run: date
       # - name: Check out repository code
       #   uses: actions/checkout@v2
